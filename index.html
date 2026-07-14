@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Predictor</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        h2 {
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top:40px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            width: 320px;
+        }
+
+        label {
+            font-size: 0.85em;
+            margin-bottom: 6px;
+            color: #a0a0a0;
+        }
+
+        input {
+            background-color: #2a2a2a;
+            border: 1px solid #333;
+            color: #ffffff;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        br {
+            display: none; 
+        }
+
+        button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        h3 {
+            margin-top: 30px;
+            font-weight: 400;
+            color: #4ade80;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Power Output Predictor</h2>
+    
+    <form action="/predict" method="POST">
+        <label>Temperature (°C):</label>
+        <input type="number" min="0" max="40" step="any" name="temp" required><br><br>
+        
+        <label>Exhaust Vacuum (cm Hg):</label>
+        <input type="number" min="25" max="85" step="any" name="vacuum" required><br><br>
+        
+        <label>Ambient Pressure (millibar):</label>
+        <input type="number" min="990" max="1040" step="any" name="pressure" required><br><br>
+        
+        <label>Relative Humidity (%):</label>
+        <input type="number" min="25" max="100" step="any" name="humidity" required><br><br>
+        
+        <button type="submit">Predict Power</button>
+    </form>
+
+    {% if prediction_text %}
+        <h4>Temperature: {{ orig_inputs[0] }} °C</h4>
+        <h4>Exhaust Vacuum: {{ orig_inputs[1] }} cm Hg</h4>
+        <h4>Ambient Pressure: {{ orig_inputs[2] }} millibar</h4>
+        <h4>Relative Humidity: {{ orig_inputs[3] }}%</h4>
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
