@@ -1,3 +1,5 @@
+# Combined Cycle Power Plant Output Predictor
+
 This is a full-stack machine learning web application that predicts the net hourly electrical energy output of a Combined Cycle Power Plant (CCPP).
 
 The model takes four environmental variables as input: temperature, exhaust vacuum, ambient pressure, and relative humidity, and predicts the predicted power output.
