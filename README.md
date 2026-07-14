@@ -1,6 +1,6 @@
 This is a full-stack machine learning web application that predicts the net hourly electrical energy output of a Combined Cycle Power Plant (CCPP).
 
-The model takes four environmental variables as input: temperature, exhaust vacuum, ambient pressure, and relative humidity, and serves the predicted power output through a dark-themed, minimal web interface.
+The model takes four environmental variables as input: temperature, exhaust vacuum, ambient pressure, and relative humidity, and predicts the predicted power output.
 
 # Tech Stack
 - Machine Learning: Python, Scikit-Learn, Pandas, NumPy
